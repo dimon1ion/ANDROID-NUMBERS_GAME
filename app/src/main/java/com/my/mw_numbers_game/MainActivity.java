@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                         timer.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                if (gameOver){
+                                    return;
+                                }
                                 timerStarted = true;
                                 progressBar.incrementProgressBy(1);
 
@@ -95,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                     button.setBackgroundColor(Color.parseColor("#4CAF50"));
                     button.setEnabled(false);
                     if (numbers.isEmpty()){
-                        timer = new Handler();
                         gameOver = true;
                         Objects.requireNonNull(getSupportActionBar())
                                 .setTitle("You won!");
